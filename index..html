@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FlipBird</title>
+
+	<!-- 移动端适配 -->
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<!-- 外部引入的css -->
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+
+	
+</head>
+<body>
+	<!-- 布局 一个大的div做游戏界面--> 
+	<div id="main">
+		
+		<!-- score 分数-->
+		<div id="score">
+			<img src="img/0.jpg">
+		</div>
+
+		<!-- header logo的上下移动 -->
+		<div id="header">
+			<img src="img/head.jpg">
+			<img src="img/1.gif">
+		</div>
+
+		<!-- start 点击开始-->
+		<div id="select">select</div>
+		<div id="selectnav">
+             <div>游戏模式</div>
+		     <div id="choose" style="display: none">
+		     	<a id="firstChoose">单人模式</a>
+		     	<a id="secondChoose">双人模式</a>
+		     </div>
+		     <div id="shutChoose">返回</div>
+		</div>
+		<div id='start'>start</div>
+		<div id='return' style="display: none">return</div>
+		<div id="rule">rule</div>
+		<!-- 游戏说明 -->
+		<div id="declaration">
+		     <div id="declare">说明</div>
+		     <ul id="brief" style="display: none">
+		     	<li>游戏规则：小鸟撞到管道或者边界游戏结束</li>
+		     	<li>单人模式：select中选择单人模式，鼠标和任意键控制小鸟飞行，页面默认start为单人模式</li>
+		     	<li>双人模式：select中选择双人模式式，空格键和回车控制两只小鸟飞行</li>
+		     	<li>得分：通过管子加一分</li>
+		     </ul>
+			
+			<div id="shut">返回</div>
+		</div>
+
+
+		<!-- bird  小鸟-->
+		<div id="bird"></div>
+
+		<!-- 滚动的line 滚动的滚动条-->
+		<div id="line"></div>
+
+		<!-- gameover 游戏结束页面 -->
+		<div id="gameover">
+			<img src="img/game_over.jpg" alt="">
+			
+			<div id='info'>
+				<!-- 当前关卡的分数 -->
+				<span id = 'currentScore'>0</span>
+				<!-- 历史最好的分数 -->
+				<span id = 'best'>0</span>
+			</div>
+			<!-- 点击ok回到开始界面 -->
+			<div id='ok' href="###">ok</div>
+			<!-- 分享 -->
+		    <div id="share">share</div>
+		</div>
+
+		<!-- 添加的声音 -->
+		<div id='sounds'>
+			<!-- 游戏开始界面的声音 -->
+			<audio src="Sounds/game_music.mp3" autoplay loop></audio>
+			<!-- 游戏中小鸟飞翔的声音 -->
+			<audio src="Sounds/Wing.wav"></audio>
+			<!-- 小鸟撞击的声音 -->
+			<audio src='Sounds/Hit.wav'></audio>
+			<!-- 得到的分数的声音 -->
+			<audio src='Sounds/Point.wav'></audio>
+			<!-- 结束的声音-->
+			<audio src='Sounds/Die.wav'></audio>
+		</div>
+
+
+		
+
+		
+	</div>
+
+	<!-- 外部引入的js -->
+	<script type="text/javascript" src="jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+      
+       	    var $declare= $("#declare");
+			var $brief =$("#brief");
+            var $div=$("#selectnav>div:nth-child(1)");
+            var $choose =$("#selectnav>div:nth-child(2)");
+	        $declare.click(function(){
+		         $brief.slideToggle('slow');
+            });
+            $div.click(function(){
+                 $choose.slideToggle('slow');
+           })
+
+	</script>
+	<script type="text/javascript" src="js/index3.js"></script>
+	
+</body>
+</html>

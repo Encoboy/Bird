@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+// 定义一个取图片的函数
+@function imgPath($name){
+	@return url('../img/'+$name);
+}
+
+// minxin,很多可以被替换的代码，这里用了if条件，在传参数的时候，如果Left不等于零，则有参数值。等于则没有Left参数
+@mixin pos($left,$top){
+	position: absolute;
+	@if($left != 0px){ 
+		left:$left;
+	}
+	@if($top != 0px){
+		top:$top;		
+	}
+}
+// 宽和高的同一样式。就像一个函数一样可以被调用 。
+@mixin rect($width:0,$height:0){
+	width:$width;
+	height:$height;
+}
+
+
+/*******************************
+	Animation
+*******************************/
+// 用动画的方法将；logo不停的上下移动。
+@keyframes moveAni {
+	from{
+		transform:translate(0px,0px);
+	}
+	to{
+		transform:translate(0px,30px);
+	}
+} 
+
+
+/*******************************
+*	app styles                 *
+*******************************/
+// 游戏界面的主要div的css
+#main{
+	// user-select 表示文本的可选择性，这里值为none，表示不可以被选择中。 
+	-webkit-user-select:none;
+	width: 343px;
+	height: 480px;
+
+	background-image: imgPath('bg.jpg');
+	position: relative;
+	margin:0 auto;
+	overflow: hidden;
+
+	// pipe css style 管子的样式
+	.pipe{
+		position: absolute;
+		width: 62px;
+	}
+	// 动态为管子图片添加类
+	.base-pipe{
+		@include rect(62px,60px);
+		@include pos(0px,0px);	
+	}
+	// 上管子的背景图
+	.up-pipe{
+		top:0px;
+		// height: 100px;
+		background-image: imgPath('up_mod.png');
+	}
+	// 下管子的背景图
+	.down-pipe{
+		// bottom: 0px;
+		// height: 200px;
+		background-image: imgPath('down_mod.png');
+	}	
+	// 背景图的样式
+	.up-pipe img{
+		@extend .base-pipe;
+		bottom:0px;
+	}
+	.down-pipe img{
+		@extend .base-pipe;
+		top: 0px;
+	}
+
+}
+// 分数的样式 z-index表示对定位中层叠面的控制
+#score{
+	@include pos(129.5px,66px);
+	z-index:998;
+	@include rect(84px,39px);
+	text-align: center;
+}
+
+
+#header{
+	@include pos(40px,140px);
+	@include rect(188px+48px+5px,77px);
+
+	// animation: moveAni 0.8s ease infinite alternate;
+
+	img{
+		vertical-align: middle;
+	}
+}
+
+#start{
+	@include rect(85px,29px);
+	@include pos(129px,277px);
+	background-image: imgPath('start.jpg');
+}
+
+#line{
+	@include rect(2*343px,21px);
+	@include pos(0px,423px);
+	background-image: imgPath('banner.jpg');
+	background-repeat: repeat-x;
+
+}
+
+#bird{
+
+	@include rect(34px,24px);
+	@include pos(100px,200px);
+	// border: 1px red solid;
+	// background-image: imgPath('1.jpg');
+	background-position: -6px -13px;
+	z-index: 999;
+}
+
+#gameover{
+	@include rect(269px,220px);
+	@include pos(37px,120px);
+	z-index: 995;
+	// border:1px red solid;
+
+	text-align: center;
+
+	#info{
+		@include rect(269px,135px);
+		background-image: imgPath('message.jpg');
+		position: relative;
+
+		font-size: 30px;
+		font-weight: bold;
+		color:white;
+
+		#currentScore{
+			@include pos(211px,31px);	
+		}
+		#best{
+			@include pos(211px,80px);
+		}
+	}
+
+	#ok{
+		@include rect(96px,33px);
+		margin-top: 10px;
+		display: inline-block;
+
+		background-image: imgPath('ok.jpg');
+		// background-repeat: no-repeat;
+	}
+}
+
+
+// 写sass原则：
+// 选择器不要嵌套太深
+
+
+
+
