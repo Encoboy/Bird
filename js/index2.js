@@ -21,8 +21,8 @@ function presentDom(aDom,show){
 let oHeader = $('header');
 let oLine = $('line');
 let oStart = $('start');
-var oMain = $('main');
-var oBird = $('bird');
+let oMain = $('main');
+let oBird = $('bird');
 var oScore = $('score');
 var oGameOver = $('gameover');
 var oCurrentScore = $('currentScore');
