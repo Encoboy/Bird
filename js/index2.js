@@ -18,9 +18,9 @@ function presentDom(aDom,show){
 
 
 // var section
-var oHeader = $('header');
-var oLine = $('line');
-var oStart = $('start');
+let oHeader = $('header');
+let oLine = $('line');
+let oStart = $('start');
 var oMain = $('main');
 var oBird = $('bird');
 var oScore = $('score');
@@ -108,7 +108,7 @@ function MoClick(event){
 	presentDom(oBird,true);
 
 	/************************
-	   点击main(屏幕)的逻辑
+	   点击main(屏幕)的逻辑方法
 	*************************/ 
 	oMain.addEventListener('click',clickTo,false);
 	function clickTo(){
